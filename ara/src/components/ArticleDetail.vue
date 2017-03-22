@@ -86,7 +86,7 @@
 
 <script>
 export default {
-  name: 'Article',
+  name: 'ArticleDetail',
   data () {
     return {
       'id': 1,
