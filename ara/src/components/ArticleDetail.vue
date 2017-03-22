@@ -2,74 +2,41 @@
   <div class="ui container">
     <div class="ui comments">
       <h3 class="ui dividing header">Comments</h3>
-      <div class="comment">
-        <a class="avatar">
-          <img src="/images/avatar/small/matt.jpg">
-        </a>
-        <div class="content">
-          <a class="author">Matt</a>
-          <div class="metadata">
-            <span class="date">Today at 5:42PM</span>
-          </div>
-          <div class="text">
-            How artistic!
-          </div>
-          <div class="actions">
-            <a class="reply">Reply</a>
-          </div>
-        </div>
-      </div>
-      <div class="comment">
-        <a class="avatar">
+      <div class="comment" v-for="comment in comments">
+        <!-- <a class="avatar">
           <img src="/images/avatar/small/elliot.jpg">
-        </a>
+        </a> -->
         <div class="content">
-          <a class="author">Elliot Fu</a>
+          <a class="author">{{comment.id}}</a>
           <div class="metadata">
-            <span class="date">Yesterday at 12:30AM</span>
+            <span class="date">{{comment.created_at}}</span>
           </div>
           <div class="text">
-            <p>This has been very useful for my research. Thanks as well!</p>
+            <p>{{comment.content}}</p>
           </div>
           <div class="actions">
             <a class="reply">Reply</a>
           </div>
         </div>
-        <div class="comments">
-          <div class="comment">
-            <a class="avatar">
+        <div class="comments" v-if="comment.comments">
+          <div class="comment" v-for="reply in comment.comments">
+            <!-- <a class="avatar">
               <img src="/images/avatar/small/jenny.jpg">
-            </a>
+            </a> -->
             <div class="content">
-              <a class="author">Jenny Hess</a>
+              <a class="author">{{reply.id}}</a>
               <div class="metadata">
                 <span class="date">Just now</span>
               </div>
               <div class="text">
-                Elliot you are always so right :)
+                {{reply.content}}
               </div>
               <div class="actions">
                 <a class="reply">Reply</a>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="comment">
-        <a class="avatar">
-          <img src="/images/avatar/small/joe.jpg">
-        </a>
-        <div class="content">
-          <a class="author">Joe Henderson</a>
-          <div class="metadata">
-            <span class="date">5 days ago</span>
-          </div>
-          <div class="text">
-            Dude, this is awesome. Thanks so much
-          </div>
-          <div class="actions">
-            <a class="reply">Reply</a>
-          </div>
+
         </div>
       </div>
       <form class="ui reply form">
@@ -93,7 +60,7 @@ export default {
       'created_at': '2017-03-16T21:25:22.739516',
       'updated_at': '2017-03-16T21:25:22.739573',
       'deleted_at': null,
-      'content': 'test',
+      'content': 'article1',
       'is_anonymous': false,
       'is_content_erotic': false,
       'is_content_social': false,
@@ -105,7 +72,42 @@ export default {
           'created_at': '2017-03-16T21:25:22.739516',
           'updated_at': '2017-03-16T21:25:22.739573',
           'deleted_at': null,
-          'content': 'test',
+          'content': 'comment1',
+          'is_anonymous': false,
+          'is_content_erotic': false,
+          'is_content_social': false,
+          'use_signature': false,
+          'comments': [
+            {
+              'id': 2,
+              'created_at': '2017-03-16T21:25:22.739516',
+              'updated_at': '2017-03-16T21:25:22.739573',
+              'deleted_at': null,
+              'content': 'reply1-1',
+              'is_anonymous': false,
+              'is_content_erotic': false,
+              'is_content_social': false,
+              'use_signature': false
+            }
+          ]
+        },
+        {
+          'id': 3,
+          'created_at': '2017-03-16T21:25:22.739516',
+          'updated_at': '2017-03-16T21:25:22.739573',
+          'deleted_at': null,
+          'content': 'comment2',
+          'is_anonymous': false,
+          'is_content_erotic': false,
+          'is_content_social': false,
+          'use_signature': false
+        },
+        {
+          'id': 4,
+          'created_at': '2017-03-16T21:25:22.739516',
+          'updated_at': '2017-03-16T21:25:22.739573',
+          'deleted_at': null,
+          'content': 'comment3',
           'is_anonymous': false,
           'is_content_erotic': false,
           'is_content_social': false,
@@ -116,7 +118,7 @@ export default {
           'created_at': '2017-03-16T21:25:22.739516',
           'updated_at': '2017-03-16T21:25:22.739573',
           'deleted_at': null,
-          'content': 'test',
+          'content': 'comment4',
           'is_anonymous': false,
           'is_content_erotic': false,
           'is_content_social': false,
@@ -127,29 +129,7 @@ export default {
           'created_at': '2017-03-16T21:25:22.739516',
           'updated_at': '2017-03-16T21:25:22.739573',
           'deleted_at': null,
-          'content': 'test',
-          'is_anonymous': false,
-          'is_content_erotic': false,
-          'is_content_social': false,
-          'use_signature': false
-        },
-        {
-          'id': 1,
-          'created_at': '2017-03-16T21:25:22.739516',
-          'updated_at': '2017-03-16T21:25:22.739573',
-          'deleted_at': null,
-          'content': 'test',
-          'is_anonymous': false,
-          'is_content_erotic': false,
-          'is_content_social': false,
-          'use_signature': false
-        },
-        {
-          'id': 1,
-          'created_at': '2017-03-16T21:25:22.739516',
-          'updated_at': '2017-03-16T21:25:22.739573',
-          'deleted_at': null,
-          'content': 'test',
+          'content': 'comment5',
           'is_anonymous': false,
           'is_content_erotic': false,
           'is_content_social': false,
@@ -160,6 +140,9 @@ export default {
         1
       ]
     }
+  },
+  methods: {
+
   }
 }
 </script>
