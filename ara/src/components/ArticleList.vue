@@ -1,31 +1,17 @@
 <template>
   <div class="ui container">
     <router-view></router-view>
-    <table class="ui celled table">
+    <table class="ui very basic table">
       <thead>
         <tr>
-          <th>title</th>
+          <th>Title</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr v-for="article in articles">
           <td>
-            <router-link to="/articles/1" class="item">
-              article #1
-            </router-link>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <router-link to="/articles/2" class="item">
-              article #2
-            </router-link>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <router-link to="/articles/3" class="item">
-              article #3
+            <router-link :to="'/articles/'+article.id" class="item">
+              {{article.title}}
             </router-link>
           </td>
         </tr>
