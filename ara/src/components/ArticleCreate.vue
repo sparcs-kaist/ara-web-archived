@@ -35,7 +35,7 @@
         </div>
       </div>
     </div>
-    <button class="ui button" v-on:click="articleCreate">
+    <button class="ui button" v-on:click="articleCreateRequest">
       Submit
     </button>
   </div>
@@ -88,13 +88,16 @@ export default {
     }
   },
   methods: {
-    articleCreate () {
-      try {
-        axios.post('http://ice.hodduc.net/articles/?user_username=guest', this.form)
-      } catch (error) {
-        throw error
-      }
-    }
+    articleCreateRequest () {
+      // promise를 다 끝내서 return하는 방식
+      axios.post('http://ice.hodduc.net/articles/?user_username=guest', this.form)
+        .then((response) => {
+          console.log(response.data)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
   }
 }
 </script>
