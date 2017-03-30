@@ -10,6 +10,17 @@
         <label>내용</label>
         <textarea rows="5" v-model="form.content"></textarea>
       </div>
+
+      <div class="inline fields">
+        <label>Tag:</label>
+        <div class="field" v-for="category in general.categories">
+          <div class="ui radio checkbox">
+            <input type="radio" name="" checked="" class="hidden">
+            <label>{{ category.ko_name }}</label>
+          </div>
+        </div>
+      </div>
+
       <div class="field">
         <div class="ui checkbox">
           <input type="checkbox" id="is_anonymous" v-model="form.is_anonymous">
@@ -60,32 +71,19 @@ export default {
         ]
       },
       general: {
-        categories: [
-          {
-            id: 1,
-            created_at: '2017-03-01T00:00:00',
-            updated_at: '2017-03-01T00:00:00',
-            deleted_at: null,
-            slug: 'garbage',
-            ko_name: '가비지',
-            en_name: 'Garbage',
-            ko_description: 'Trash, Garbage, Non-recyclable',
-            en_description: 'Trash, Garbage, Non-recyclable'
-          },
-          {
-            id: 2,
-            created_at: '2017-03-01T00:00:00',
-            updated_at: '2017-03-01T00:00:00',
-            deleted_at: null,
-            slug: 'love',
-            ko_name: '사랑',
-            en_name: 'Love',
-            ko_description: '꿈과 사랑과 희망의 KAIST!',
-            en_description: '꿈과 사랑과 희망의 KAIST!'
-          }
-        ]
+        categories: []
       }
     }
+  },
+  created () {
+    // promise를 받아서 처리합니다.
+    this.getCategories()
+      .then((response) => {
+        this.general.categories = response.data
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   },
   methods: {
     articleCreateRequest () {
