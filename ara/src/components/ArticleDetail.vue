@@ -1,5 +1,19 @@
 <template>
   <div class="ui container">
+    <div class="ui segments">
+      <div class="ui segment">
+	<h3 class="ui header">
+	  {{ title }}
+	</h3>
+	<a class="author">{{id}}</a>
+        <div class="metadata">
+          <span class="date">{{created_at}}</span>
+        </div>
+      </div>
+      <div class="ui segment">
+	<p> {{ content }}</p>
+      </div>
+    </div>
     <div class="ui comments">
       <h3 class="ui dividing header">Comments</h3>
       <div class="comment" v-for="comment in comments">
